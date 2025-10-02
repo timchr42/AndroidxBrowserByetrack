@@ -1,17 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
+    id("maven-publish")
 }
 
 android {
     buildFeatures {
         aidl = true
     }
-    // The sourceSets block should be here
-    sourceSets {
-        getByName("main") {
-            aidl.srcDirs("src/main/aidl")
-        }
-    }
+
     namespace = "androidx.browser"
     compileSdk = 36
 
