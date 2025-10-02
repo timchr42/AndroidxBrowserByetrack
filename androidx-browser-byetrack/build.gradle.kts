@@ -31,6 +31,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    publishing {
+        singleVariant("release")
+    }
+
 }
 
 dependencies {
@@ -62,4 +67,17 @@ dependencies {
 
     androidTestImplementation(libs.junit)
     androidTestImplementation("androidx.appcompat:appcompat:1.1.0")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.timchr42"
+                artifactId = "byetrack"
+                version = "0.1.0"
+            }
+        }
+    }
 }
