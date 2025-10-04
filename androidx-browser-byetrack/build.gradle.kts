@@ -39,7 +39,8 @@ android {
 }
 
 dependencies {
-    implementation(libs.byetrack)
+    //implementation(libs.byetrack)
+    implementation("com.timchr42:byetrack:0.1.0")
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -74,8 +75,8 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.github.timchr42"
-                artifactId = "byetrack"
+                groupId = "com.timchr42"
+                artifactId = "AndroidxBrowserByetrack"
                 version = "0.1.0"
             }
         }
