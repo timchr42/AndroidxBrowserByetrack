@@ -1,11 +1,11 @@
-package androidx.browser.customtabs;
+package androidx.browser.byetrack;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import org.json.JSONArray;
 import java.util.Map;
 
-public final class ByetrackDebugHelp {
+public final class DebugHelp {
 
     public static String displayFinalTokens(Context context) {
         SharedPreferences finalPrefs = context.getSharedPreferences("final_token", Context.MODE_PRIVATE);

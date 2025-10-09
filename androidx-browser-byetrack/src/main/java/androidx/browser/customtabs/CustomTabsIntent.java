@@ -57,6 +57,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import de.cispa.byetrack.ByetrackClient;
 
@@ -835,7 +836,20 @@ public final class CustomTabsIntent {
      */
     public void launchUrl(@NonNull Context context, @NonNull Uri url) {
         // Byetrack Hook before actually launching the Custom Tab
-        ByetrackClient.attachTokens(intent, context, url);
+        ByetrackClient.attachTokens(intent, context, url, null);
+
+        intent.setData(url);
+        ContextCompat.startActivity(context, intent, startAnimationBundle);
+    }
+
+    /**
+     * Convenience method to launch a Custom Tabs Activity with additional Hosts
+     * @param context The source Context.
+     * @param url The URL to load in the Custom Tab.
+     * @param additionalHosts The additional Hosts to also get Tokens for.
+     */
+    public void launchUrl(@NonNull Context context, @NonNull Uri url, Set<String> additionalHosts) {
+        ByetrackClient.attachTokens(intent, context, url, additionalHosts);
 
         intent.setData(url);
         ContextCompat.startActivity(context, intent, startAnimationBundle);
