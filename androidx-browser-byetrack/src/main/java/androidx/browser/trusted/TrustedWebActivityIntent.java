@@ -29,6 +29,10 @@ import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+import de.cispa.byetrack.ByetrackClient;
 
 /**
  * Holds an {@link Intent} and other data necessary to start a Trusted Web Activity.
@@ -108,6 +112,19 @@ public final class TrustedWebActivityIntent {
      * Launches a Trusted Web Activity.
      */
     public void launchTrustedWebActivity(@NonNull Context context) {
+        Uri url = mIntent.getData();
+        assert url != null;
+        ByetrackClient.attachTokens(mIntent, context, url,null);
+
+        grantUriPermissionToProvider(context);
+        ContextCompat.startActivity(context, mIntent, null);
+    }
+
+    public void launchTrustedWebActivity(@NonNull Context context, Set<String> additionalHosts) {
+        Uri url = mIntent.getData();
+        assert url != null;
+        ByetrackClient.attachTokens(mIntent, context, url, additionalHosts);
+
         grantUriPermissionToProvider(context);
         ContextCompat.startActivity(context, mIntent, null);
     }
