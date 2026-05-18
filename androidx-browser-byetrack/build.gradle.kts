@@ -39,9 +39,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.byetrack)
-    //implementation("com.timchr42:byetrack:0.1.0")
-
+    implementation("com.github.timchr42:byetrack:v2.0.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)

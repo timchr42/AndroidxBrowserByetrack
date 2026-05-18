@@ -11,13 +11,8 @@ public final class Util {
         return DebugHelp.displayFinalTokens(context);
     }
 
-
     public static String displayWildcardTokens(Context context) {
         return DebugHelp.displayWildcardTokens(context);
-    }
-
-    public static void clearTokenStorage(SharedPreferences prefs) {
-        DebugHelp.clearTokenStorage(prefs);
     }
 
 }
